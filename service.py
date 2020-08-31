@@ -4,7 +4,7 @@ import shutil
 import os
 import time
 
-from datetime import datetime
+from datetime import datetime, date
 from settings import USER_NAME, USER_PASSWORD, DOWNLOAD_PATH
 
 
@@ -36,7 +36,7 @@ def download_bankslip_not_payed(driver, df):
         '//*[@id="quadroTransparente"]/table[2]/tbody/tr[{}]/td[10]/a[2]'.format(index + 2))
     boleto.click()
     time.sleep(2)
-    move_pdf()
+    move_pdf(df)
 
 
 def get_index_not_paymed(df):
@@ -48,7 +48,29 @@ def get_index_not_paymed(df):
             return list_of_values.index(value)
 
 
-def build_csv(df):
+def move_pdf(df):
+    docs_path = os.getcwd() + '/docs'
+    bankslip_path = docs_path + '/boletos'
+    if not os.path.exists(bankslip_path):
+        os.mkdir(docs_path)
+        os.mkdir(bankslip_path)
+
+    os.chdir(DOWNLOAD_PATH)
+    try:
+        for arq in os.listdir():
+            if 'boleto' in arq and arq.split('.')[1] == 'pdf':
+                if verify_existence(arq, bankslip_path):
+                    rename = str(arq.split('.')[0]).replace(' ', '') + str(date.today()) + '.' + str(arq.split('.')[1])
+                    shutil.move(DOWNLOAD_PATH + '/' + arq, bankslip_path + '/' + rename)
+
+    except:
+        print("Destination Path already exists")
+    finally:
+        build_csv(df, docs_path)
+
+
+def build_csv(df, path):
+    os.chdir(path)
     dictionary = {}
     for data in df:
         dictionary.update({str(data): list(df[data])})
@@ -63,21 +85,6 @@ def build_csv(df):
 
 def build_data_frame(dictionary: dict):
     return pandas.DataFrame(dictionary)
-
-
-def move_pdf():
-    bankslip_path = os.getcwd() + '/boletos'
-    if not os.path.exists(bankslip_path):
-        os.mkdir(bankslip_path)
-
-    os.chdir(DOWNLOAD_PATH)
-    try:
-        for arq in os.listdir():
-            if 'boleto' in arq and arq.split('.')[1] == 'pdf':
-                if verify_existence(arq, bankslip_path):
-                    shutil.move(DOWNLOAD_PATH + '/' + arq, bankslip_path)
-    except:
-        print("Destination Path already exists")
 
 
 def verify_existence(arq, path):

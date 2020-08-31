@@ -2,7 +2,7 @@ import sys
 
 from selenium import webdriver
 from settings import WEB_SITE, WEB_DRIVER
-from service import make_login, get_readable_data, download_bankslip_not_payed, build_csv
+from service import make_login, get_readable_data, download_bankslip_not_payed
 
 
 def main():
@@ -16,7 +16,6 @@ def main():
         df = get_readable_data(driver)
 
         download_bankslip_not_payed(driver, df)
-        build_csv(df)
 
     except:
         print('Something Went Wrong')
