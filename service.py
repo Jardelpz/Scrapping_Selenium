@@ -26,7 +26,8 @@ def get_readable_data(driver):
 
 def download_bankslip_not_payed(driver, df):
     index = get_index_not_paymed(df)
-    boleto = driver.find_element_by_xpath('//*[@id="quadroTransparente"]/table[2]/tbody/tr[{}]/td[10]/a[2]'.format(index+2))
+    boleto = driver.find_element_by_xpath(
+        '//*[@id="quadroTransparente"]/table[2]/tbody/tr[{}]/td[10]/a[2]'.format(index + 2))
     boleto.click()
 
 
@@ -37,4 +38,3 @@ def get_index_not_paymed(df):
     for value in list_of_values:
         if not value:
             return list_of_values.index(value)
-

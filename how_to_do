@@ -4,4 +4,5 @@ enviar para o email
 
 futuramente tornar um agendador (orchestrator?) pra sempre dia x fazer o download do boleto
 
+you need to istall web driver, in my case i installed and put at C:\Selenium\chromedriver.exe
 
