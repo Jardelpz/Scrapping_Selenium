@@ -1,0 +1,14 @@
+//*[@id="quadroTransparente"]/table[2]/tbody/tr[2]/td[10]/a[2] - boelto
+undefined
+//*[@id="quadroTransparente"]/table[2]/tbody/tr[2]/td[10]/a[1] - detalhes do boelto
+
+
+
+//*[@id="quadroTransparente"]/table[2]/tbody/tr[3]/td[10]/a
+undefined
+//*[@id="quadroTransparente"]/table[2]/tbody/tr[4]/td[10]/a
+undefined
+//*[@id="quadroTransparente"]/table[2]/tbody/tr[3]/td[10]/a
+undefined
+//*[@id="quadroTransparente"]/table[2]/tbody/tr[16]/td[10]/a
+undefined

@@ -1,0 +1,4 @@
+selenium
+python-decouple
+pandas
+lxml
