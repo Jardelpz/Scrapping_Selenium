@@ -40,7 +40,7 @@ PS: This works for FURB students, only.
    ```
    
    Delete the build paste and main.spec file. The .exe will be in dist/file_to_become_executable.exe,
-   move this file to project path, delete dist and just RUN the file, be happy :happy:
+   move this file to project path, delete dist and just RUN the file, be happy :satisfied:
    
    
 ## Next Step
