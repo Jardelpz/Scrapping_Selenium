@@ -40,7 +40,6 @@ def download_bankslip_not_payed(driver, df):
 
 def get_index_not_paymed(df):
     list_of_values = list(df['Valor Pago'])
-    # lis_of_payment = {list_due_date[i]: list_of_values[i] for i in range(0, len(list_due_date))} # Export to json, csv something like that
 
     for value in list_of_values:
         if not value:
