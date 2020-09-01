@@ -12,7 +12,7 @@ it is only necessary to run the project and I will have in my "preferential" ema
 
 ### Running the project 
     * Build a new venv
-    * `` ffdf``
+    * Run  ``` pip install -r requirements.txt  ```
 
 
 ## Built With
