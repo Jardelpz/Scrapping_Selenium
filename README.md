@@ -20,6 +20,9 @@ it is only necessary to run the project and I will have in my "preferential" ema
    After you run main.py, it will be create new directory called "docs", inside it will contain your bank slip, an 
    image of your history of payments and a csv file with the data of the image manipulable. Like that:
    
+   ![pastas](https://user-images.githubusercontent.com/32064166/91867067-9385ab00-ec49-11ea-9acf-ae6255532d8b.JPG)
+
+   
    
    
 ## Built With
@@ -28,7 +31,6 @@ it is only necessary to run the project and I will have in my "preferential" ema
 * [Selenium](https://www.selenium.dev/)
 * [SMTP](https://docs.python.org/3/library/smtplib.html)
 
-## What 
 
 ## Next Step
 
