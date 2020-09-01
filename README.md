@@ -32,7 +32,17 @@ PS: This works for FURB students, only.
 * [Selenium](https://www.selenium.dev/)
 * [SMTP](https://docs.python.org/3/library/smtplib.html)
 
-
+## One Step Forward
+   Let's make a .exe file? It's very simple! Go to path of your project and apply this following command:
+   ```
+   pip install pyinstaller
+   pyinstaller --onefile -w file_to_become_executable.py
+   ```
+   
+   Delete the build paste and main.spec file. The .exe will be in dist/file_to_become_executable.exe,
+   move this file to project path, delete dist and just RUN the file, be happy :happy:
+   
+   
 ## Next Step
 
 I intend to make an executable file, by this i can share with my classmates.
