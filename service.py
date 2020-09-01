@@ -1,5 +1,4 @@
 import pandas
-import csv
 import shutil
 import os
 import time
@@ -30,13 +29,13 @@ def get_readable_data(driver):
     return pandas.read_html(table_html)[0]
 
 
-def download_bankslip_not_payed(driver, df):
+def download_bankslip_not_payed(driver, df) -> None:
     index = get_index_not_paymed(df)
     boleto = driver.find_element_by_xpath(
         '//*[@id="quadroTransparente"]/table[2]/tbody/tr[{}]/td[10]/a[2]'.format(index + 2))
     boleto.click()
     time.sleep(2)
-    move_pdf(df)
+    move_pdf(df, driver)
 
 
 def get_index_not_paymed(df):
@@ -48,13 +47,17 @@ def get_index_not_paymed(df):
             return list_of_values.index(value)
 
 
-def move_pdf(df):
+def move_pdf(df, driver) -> None:
     docs_path = os.getcwd() + '/docs'
     bankslip_path = docs_path + '/boletos'
+    image_path = docs_path + '/images'
     if not os.path.exists(bankslip_path):
         os.mkdir(docs_path)
         os.mkdir(bankslip_path)
-
+        os.mkdir(image_path)
+    os.chdir(image_path)
+    table = driver.find_element_by_xpath('//*[@id="quadroTransparente"]/table[2]')
+    table.screenshot('payment{}.png'.format(str(date.today())))
     os.chdir(DOWNLOAD_PATH)
     try:
         for arq in os.listdir():
@@ -69,18 +72,16 @@ def move_pdf(df):
         build_csv(df, docs_path)
 
 
-def build_csv(df, path):
+def build_csv(df, path) -> None:
     os.chdir(path)
     dictionary = {}
     for data in df:
         dictionary.update({str(data): list(df[data])})
 
     payment_csv = str(datetime.today()).replace(' ', 'T').replace(':', '-').split('.')[0] + '.csv'
-    print(payment_csv)
 
-    with open(payment_csv, 'w', newline='') as file:
-        dt = build_data_frame(dictionary)
-        dt.to_csv(payment_csv, index=False)
+    dt = build_data_frame(dictionary)
+    dt.to_csv(payment_csv, index=False)
 
 
 def build_data_frame(dictionary: dict):

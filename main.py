@@ -3,6 +3,7 @@ import sys
 from selenium import webdriver
 from settings import WEB_SITE, WEB_DRIVER
 from service import make_login, get_readable_data, download_bankslip_not_payed
+from send_email import send_email
 
 
 def main():
@@ -16,6 +17,7 @@ def main():
         df = get_readable_data(driver)
 
         download_bankslip_not_payed(driver, df)
+        send_email()
 
     except:
         print('Something Went Wrong')

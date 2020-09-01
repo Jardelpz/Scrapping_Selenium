@@ -2,3 +2,4 @@ selenium
 python-decouple
 pandas
 lxml
+email
