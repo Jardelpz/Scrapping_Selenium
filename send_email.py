@@ -46,4 +46,4 @@ def send_email():
         print("Error sending email")
 
 
-send_email()
+

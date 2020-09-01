@@ -16,8 +16,8 @@ def main():
         make_login(driver)
         df = get_readable_data(driver)
 
-        if download_bankslip_not_payed(driver, df):
-            send_email()
+        download_bankslip_not_payed(driver, df)
+        send_email()
 
     except:
         print('Something Went Wrong')

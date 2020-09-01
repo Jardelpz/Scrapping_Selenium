@@ -29,17 +29,13 @@ def get_readable_data(driver):
     return pandas.read_html(table_html)[0]
 
 
-def download_bankslip_not_payed(driver, df) -> bool:
-    try:
-        index = get_index_not_paymed(df)
-        boleto = driver.find_element_by_xpath(
-            '//*[@id="quadroTransparente"]/table[2]/tbody/tr[{}]/td[10]/a[2]'.format(index + 2))
-        boleto.click()
-        time.sleep(2)
-        move_pdf(df, driver)
-        return True
-    except:
-        return False
+def download_bankslip_not_payed(driver, df):
+    index = get_index_not_paymed(df)
+    boleto = driver.find_element_by_xpath(
+        '//*[@id="quadroTransparente"]/table[2]/tbody/tr[{}]/td[10]/a[2]'.format(index + 2))
+    boleto.click()
+    move_pdf(df, driver)
+    time.sleep(2)
 
 
 def get_index_not_paymed(df):
