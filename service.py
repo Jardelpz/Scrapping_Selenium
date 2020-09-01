@@ -7,6 +7,17 @@ from datetime import datetime, date
 from settings import USER_NAME, USER_PASSWORD, DOWNLOAD_PATH
 
 
+def prepare_setup() -> bool:
+    try:
+        os.system("pip install virtualenv")
+        os.system("virtualenv venv")
+        os.system(r"venv\Scripts\activate")
+        os.system("pip install -r requirements.txt")
+        return True
+    except:
+        return False
+
+
 def make_login(driver) -> None:
     time.sleep(0.5)
     user_name = driver.find_element_by_xpath('//*[@id="quadroTransparente"]/form/table/tbody/tr[1]/td[2]/input')

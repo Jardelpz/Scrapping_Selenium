@@ -2,7 +2,7 @@ import sys
 
 from selenium import webdriver
 from settings import WEB_SITE, WEB_DRIVER
-from service import make_login, get_readable_data, download_bankslip_not_payed
+from service import make_login, get_readable_data, download_bankslip_not_payed, prepare_setup
 from send_email import send_email
 
 
@@ -13,11 +13,12 @@ def main():
     driver.get(WEB_SITE)
 
     try:
-        make_login(driver)
-        df = get_readable_data(driver)
+        if prepare_setup():
+            make_login(driver)
+            df = get_readable_data(driver)
 
-        download_bankslip_not_payed(driver, df)
-        send_email()
+            download_bankslip_not_payed(driver, df)
+            send_email()
 
     except:
         print('Something Went Wrong')
