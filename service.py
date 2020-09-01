@@ -29,13 +29,17 @@ def get_readable_data(driver):
     return pandas.read_html(table_html)[0]
 
 
-def download_bankslip_not_payed(driver, df) -> None:
-    index = get_index_not_paymed(df)
-    boleto = driver.find_element_by_xpath(
-        '//*[@id="quadroTransparente"]/table[2]/tbody/tr[{}]/td[10]/a[2]'.format(index + 2))
-    boleto.click()
-    time.sleep(2)
-    move_pdf(df, driver)
+def download_bankslip_not_payed(driver, df) -> bool:
+    try:
+        index = get_index_not_paymed(df)
+        boleto = driver.find_element_by_xpath(
+            '//*[@id="quadroTransparente"]/table[2]/tbody/tr[{}]/td[10]/a[2]'.format(index + 2))
+        boleto.click()
+        time.sleep(2)
+        move_pdf(df, driver)
+        return True
+    except:
+        return False
 
 
 def get_index_not_paymed(df):
@@ -51,13 +55,13 @@ def move_pdf(df, driver) -> None:
     docs_path = os.getcwd() + '/docs'
     bankslip_path = docs_path + '/boletos'
     image_path = docs_path + '/images'
-    if not os.path.exists(bankslip_path):
+    if not os.path.exists(bankslip_path) and not os.path.exists(image_path):
         os.mkdir(docs_path)
         os.mkdir(bankslip_path)
         os.mkdir(image_path)
-    os.chdir(image_path)
-    table = driver.find_element_by_xpath('//*[@id="quadroTransparente"]/table[2]')
-    table.screenshot('payment{}.png'.format(str(date.today())))
+
+    take_screenshot(image_path, driver)
+
     os.chdir(DOWNLOAD_PATH)
     try:
         for arq in os.listdir():
@@ -70,6 +74,12 @@ def move_pdf(df, driver) -> None:
         print("Destination Path already exists")
     finally:
         build_csv(df, docs_path)
+
+
+def take_screenshot(path, driver) -> None:
+    os.chdir(path)
+    table = driver.find_element_by_xpath('//*[@id="quadroTransparente"]/table[2]')
+    table.screenshot('payment{}.png'.format(str(date.today())))
 
 
 def build_csv(df, path) -> None:
