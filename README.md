@@ -44,7 +44,6 @@ PS: This works for FURB students, only.
    
 ## Next Step
 
-I intend to make an executable file, by this i can share with my classmates.
 Automate to another level, run the script once a month every day pre-defined by the user.
 
 This project looks great, - it's time to merge! :shipit:
