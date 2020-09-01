@@ -12,13 +12,23 @@ it is only necessary to run the project and I will have in my "preferential" ema
 
 ### Running the project 
     * Build a new venv
-    * Run  ``` pip install -r requirements.txt  ```
+    * Run  pip install -r requirements.txt inside the new venv
+    * Set up your credencials at.env (make sure if you've chrome webdriver, if not, download it)
+    * Just run the main.py file
 
-
+### After Running
+   After you run main.py, it will be create new directory called "docs", inside it will contain your bank slip, an 
+   image of your history of payments and a csv file with the data of the image manipulable. Like that:
+   
+   
+   
 ## Built With
 
-* [Nodejs](https://nodejs.org/en/) - JavaScript runtime built
-* [Puppeteer](https://pptr.dev/) - Puppeteer is a Node library which provides a high-level API to control Chrome
+* [Python](https://www.python.org/)
+* [Selenium](https://www.selenium.dev/)
+* [SMTP](https://docs.python.org/3/library/smtplib.html)
+
+## What 
 
 ## Next Step
 
