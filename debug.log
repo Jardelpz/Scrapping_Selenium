@@ -1,14 +1,12 @@
-//*[@id="quadroTransparente"]/table[2]/tbody/tr[2]/td[10]/a[2] - boelto
-undefined
-//*[@id="quadroTransparente"]/table[2]/tbody/tr[2]/td[10]/a[1] - detalhes do boelto
+Baixar boleto do mês atual
+enviar para o email
 
 
+futuramente tornar um agendador (orchestrator?) pra sempre dia x fazer o download do boleto
 
-//*[@id="quadroTransparente"]/table[2]/tbody/tr[3]/td[10]/a
-undefined
-//*[@id="quadroTransparente"]/table[2]/tbody/tr[4]/td[10]/a
-undefined
-//*[@id="quadroTransparente"]/table[2]/tbody/tr[3]/td[10]/a
-undefined
-//*[@id="quadroTransparente"]/table[2]/tbody/tr[16]/td[10]/a
-undefined
+you need to istall web driver, in my case i installed and put at C:\Selenium\chromedriver.exe
+
+tirar print e enviar pelo email juntamento ao pdf
+
+pip install pyinstaller
+pyinstaller --onefile -w arquivo.py
