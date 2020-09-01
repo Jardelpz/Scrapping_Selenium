@@ -5,8 +5,10 @@
 
 
 
-This project was designed to automate my monthly routine. Every month I have to generate the download of my college's bank slip. With what has been done, 
-it is only necessary to run the project and I will have in my "preferential" email the bank slip as well as the financial history of payments.
+This project was designed to automate my monthly routine. Every month I have to generate the download of my college's bank slip. 
+With what has been done, it is only necessary to run the project and I will have in my "preferential" email the bank slip as
+well as the financial history of payments. 
+PS: This works for FURB students, only.
 
 ## Getting Started
 
@@ -24,7 +26,6 @@ it is only necessary to run the project and I will have in my "preferential" ema
 
    
    
-   
 ## Built With
 
 * [Python](https://www.python.org/)
@@ -34,17 +35,7 @@ it is only necessary to run the project and I will have in my "preferential" ema
 
 ## Next Step
 
-Write some text automatically into a readme.md like an introduction to theme
+I intend to make an executable file, by this i can share with my classmates.
+Automate to another level, run the script once a month every day pre-defined by the user.
 
 This project looks great, - it's time to merge! :shipit:
-
-
-
-
-
-
-
-
-
-
-
