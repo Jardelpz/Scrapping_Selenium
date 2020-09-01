@@ -13,9 +13,8 @@ PS: This works for FURB students, only.
 ## Getting Started
 
 ### Running the project 
-    * Build a new venv
-    * Run  pip install -r requirements.txt inside the new venv
     * Set up your credencials at.env (make sure if you've chrome webdriver, if not, download it)
+    * If you are using outlook change the SMTP instance
     * Just run the main.py file
 
 ### After Running
