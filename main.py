@@ -13,12 +13,11 @@ def main():
     driver.get(WEB_SITE)
 
     try:
-        if prepare_setup():
-            make_login(driver)
-            df = get_readable_data(driver)
+        make_login(driver)
+        df = get_readable_data(driver)
 
-            download_bankslip_not_payed(driver, df)
-            send_email()
+        download_bankslip_not_payed(driver, df)
+        send_email()
 
     except:
         print('Something Went Wrong')
