@@ -35,10 +35,10 @@ PS: This works for FURB students, only.
    Let's make a .exe file? It's very simple! Go to path of your project and apply this following command:
    ```
    pip install pyinstaller
-   pyinstaller --onefile -w file_to_become_executable.py
+   pyinstaller --onefile -w main.py
    ```
    
-   Delete the build paste and main.spec file. The .exe will be in dist/file_to_become_executable.exe,
+   Delete the build paste and main.spec file. The .exe will be in dist/main.exe,
    move this file to project path, delete dist and just RUN the file, be happy :satisfied:
    
    
