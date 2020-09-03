@@ -4,7 +4,7 @@ import os
 import time
 
 from datetime import datetime, date
-from settings import USER_NAME, USER_PASSWORD, DOWNLOAD_PATH
+from settings import USER_NAME, USER_PASSWORD
 
 
 def prepare_setup() -> bool:
