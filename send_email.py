@@ -16,9 +16,8 @@ smtpObj.starttls()
 smtpObj.login(EMAIL, EMAIL_PASSWORD)
 
 
-def send_email():
-    os.getcwd()
-    current_dir = r"C:\Users\jarde\Documents\webScrapping\Scrapping_Selenium\docs"
+def send_email(path):
+    current_dir = os.path.join(path, 'docs')
     bankslip_path = current_dir + '/boletos/boleto{}.pdf'.format(str(date.today()))
     image_path = current_dir + '/images/payment{}.png'.format(str(date.today()))
     try:
@@ -41,9 +40,7 @@ def send_email():
                                        filename="Boleto do mês {}".format(date.today().month))
         msg.attach(bankslip_attach)
         smtpObj.send_message(msg)
-
+        print("Email enviado com sucesso")
     except:
         print("Error sending email")
-
-
 

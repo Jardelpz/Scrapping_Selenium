@@ -13,6 +13,7 @@ def prepare_setup() -> bool:
         os.system("virtualenv venv")
         os.system(r"venv\Scripts\activate")
         os.system("pip install -r requirements.txt")
+        time.sleep(3)
         return True
     except:
         return False
@@ -40,13 +41,13 @@ def get_readable_data(driver):
     return pandas.read_html(table_html)[0]
 
 
-def download_bankslip_not_payed(driver, df):
+def download_bankslip_not_payed(driver, df, path):
     index = get_index_not_paymed(df)
     boleto = driver.find_element_by_xpath(
         '//*[@id="quadroTransparente"]/table[2]/tbody/tr[{}]/td[10]/a[2]'.format(index + 2))
     boleto.click()
-    move_pdf(df, driver)
-    time.sleep(2)
+    time.sleep(5)
+    move_pdf(df, driver, path)
 
 
 def get_index_not_paymed(df):
@@ -57,10 +58,10 @@ def get_index_not_paymed(df):
             return list_of_values.index(value)
 
 
-def move_pdf(df, driver) -> None:
-    docs_path = os.getcwd() + '/docs'
-    bankslip_path = docs_path + '/boletos'
-    image_path = docs_path + '/images'
+def move_pdf(df, driver, path) -> None:
+    docs_path = os.path.join(path, 'docs')
+    bankslip_path = os.path.join(docs_path, 'boletos')
+    image_path = os.path.join(docs_path, 'images')
     if not os.path.exists(bankslip_path) and not os.path.exists(image_path):
         os.mkdir(docs_path)
         os.mkdir(bankslip_path)
@@ -68,13 +69,13 @@ def move_pdf(df, driver) -> None:
 
     take_screenshot(image_path, driver)
 
-    os.chdir(DOWNLOAD_PATH)
+    os.chdir(path)
     try:
         for arq in os.listdir():
             if 'boleto' in arq and arq.split('.')[1] == 'pdf':
                 if verify_existence(arq, bankslip_path):
                     rename = str(arq.split('.')[0]).replace(' ', '') + str(date.today()) + '.' + str(arq.split('.')[1])
-                    shutil.move(DOWNLOAD_PATH + '/' + arq, bankslip_path + '/' + rename)
+                    shutil.move(path + '/' + arq, bankslip_path + '/' + rename)
 
     except:
         print("Destination Path already exists")
